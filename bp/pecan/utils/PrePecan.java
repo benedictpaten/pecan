@@ -414,6 +414,20 @@ public class PrePecan {
 
         return pC;
     }
+    
+    public static String makeStarTreeP(int sequenceNumber) {
+    	assert(sequenceNumber > 0);
+    	if(sequenceNumber >= 2) {
+    		return "(" + makeStarTreeP(sequenceNumber/2) + ":1.0," +  makeStarTreeP(sequenceNumber/2 + sequenceNumber%2) + ":1.0)";
+    	}
+    	else {
+    		return "A";
+    	}
+    }
+    
+    public static String makeStarTree(int sequenceNumber) {
+    	return makeStarTreeP(sequenceNumber) + ";";
+    }
 
     public static LocalAligner makeExonerateAligner(
             final String[] basicCommand, final String exonerateString,
@@ -454,12 +468,19 @@ public class PrePecan {
 		}
         inputMunger.processStandardWatches();
         prePecan.parseArguments(inputMunger);
-        final String treeFile = inputMunger.watchStrings(PrePecan.TREE)[0];
         final String[] seqFiles = inputMunger.watchStrings(PrePecan.SEQUENCES);
+        final int sequenceNumber = seqFiles.length;
+        final String treeFile;
+        if (inputMunger.watchSet(PrePecan.TREE)) {
+        	treeFile = inputMunger.watchStrings(PrePecan.TREE)[0];
+        }
+        else {
+        	treeFile = prePecan.makeStarTree(sequenceNumber);
+        }
         final NewickTreeParser.Node tree = new NewickTreeParser(
                 NewickTreeParser.commentEater(NewickTreeParser
                         .tokenise(new StringReader(treeFile)))).tree;
-        final int sequenceNumber = seqFiles.length;
+        
         
         
         final PrimeConstraints pC = prePecan.runPrePecan(tree, seqFiles);
