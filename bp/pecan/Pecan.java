@@ -448,7 +448,6 @@ public class Pecan {
                     final List l = (List) GeneratorTools.append(pC
                             .convertPrimeConstraintsToEdgeList(i, j,
                                     true), new LinkedList());
-                    
                     chains[i][j] = l;
                     final int k = i;
                     final int m = j;
@@ -1688,19 +1687,9 @@ public class Pecan {
         prePecan.parseArguments(inputMunger);
         pecan.parseArguments(inputMunger);
         logger.info("Arguments received : " + IterationTools.join(args, " "));
-        
-        //final String treeFile = inputMunger.watchStrings(PrePecan.TREE)[0];
-        final String[] seqFiles = inputMunger 
+        final String treeFile = inputMunger.watchStrings(PrePecan.TREE)[0];
+        final String[] seqFiles = inputMunger
                 .watchStrings(PrePecan.SEQUENCES);
-        final int sequenceNumber = seqFiles.length;
-        
-        final String treeFile;
-        if (inputMunger.watchSet(PrePecan.TREE)) {
-        	treeFile = inputMunger.watchStrings(PrePecan.TREE)[0];
-        }
-        else {
-        	treeFile = prePecan.makeStarTree(sequenceNumber);
-        }
         NewickTreeParser.Node tree;
         {
             final Reader r = new StringReader(treeFile);
