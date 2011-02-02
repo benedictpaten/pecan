@@ -1,0 +1,10 @@
+Installing pecan.
+
+(1) Install Exonerate by Guy Slater
+
+(2) Build the code:
+Type make all in the base directory, a jar is created in the base dir.
+
+(3) Add the jar to your class path.
+
+See https://github.com/benedictpaten/ for different projects.
