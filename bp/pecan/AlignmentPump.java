@@ -31,7 +31,7 @@ public class AlignmentPump {
             final int[] iA2 = seqStartAndEnds[index + j];
             iA[j * 2] = iA2[0];
             iA[j * 2 + 1] = iA2[1];
-        }
+        } 
         return iA;
     } 
 
