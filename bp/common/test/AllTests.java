@@ -16,6 +16,6 @@ public class AllTests {
         //$JUnit-BEGIN$
         suite.addTestSuite(TestToolsTest.class);
         //$JUnit-END$
-        return suite;
-    }
+        return suite; 
+    } 
 }
