@@ -36,7 +36,7 @@ public class AlphabetTest
             }
             oS.close();
             final byte[] bA2 = TrawlerToolsTest.getString(bAA);
-            final byte[] bA = Alphabet.readInString(f.toString(), (byte)16);
+            final byte[] bA = Alphabet.readInString(f.toString(), (byte)16, false);
             Assert.assertTrue(Arrays.equals(bA, bA2));
         }
     }
