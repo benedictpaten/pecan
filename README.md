@@ -14,3 +14,5 @@ java -cp {path to pecan dir} bp.pecan.Pecan (if you didn't set the class path)
 java bp.pecan.Pecan
 
 See https://github.com/benedictpaten/ for different projects.
+
+For usage instructions see doc/
